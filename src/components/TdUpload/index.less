@@ -1,0 +1,84 @@
+.upload {
+  margin-bottom: 24px;
+
+  :global {
+    .ant-upload-list {
+      display: none !important;
+    }
+  }
+
+  .label {
+    text-align: right;
+    padding-right: 8px;
+    line-height: 39px;
+    color: rgba(0, 0, 0, 0.85);
+  }
+
+  .required {
+    &:before {
+      font-family: SimSun;
+      display: inline-block;
+      margin-right: 4px;
+      content: "*";
+      line-height: 1;
+      font-size: 14px;
+      color: #f5222d;
+    }
+  }
+
+  .fileList {
+    margin-top: 5px;
+  }
+
+  .fileItem {
+    padding: 0 20px 0 5px;
+    position: relative;
+    color: #49a9ee;
+    line-height: 32px;
+    border-radius: 4px;
+    cursor: pointer;
+
+    p {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin: 0;
+    }
+
+    span {
+      float: right;
+      width: 20px;
+      text-align: center;
+      display: none;
+      position: absolute;
+      z-index: 9;
+      top: 0;
+      right: 0;
+      color: rgba(0, 0, 0, .43);
+    }
+  }
+
+  .fileItem:hover {
+    background: #ecf6fd;
+
+    span {
+      display: block;
+    }
+  }
+
+  .accept {
+    font-size: 12px;
+  }
+
+  .extra {
+    color: rgba(0, 0, 0, 0.45);
+    line-height: 2;
+    font-size: 12px;
+  }
+
+  .template {
+    position: absolute;
+    top: 7px;
+    left: 120px;
+  }
+}
