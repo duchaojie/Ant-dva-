@@ -4,6 +4,7 @@ import { Row, Col, Form ,Select,Input } from 'antd';
 import FormItem from '../../components/FormItem';
 import { genNonDuplicateID } from '../../utils';
 
+//弹框 新增
 const colSpan = 12;
 class ModalCreate extends React.PureComponent {
   state = {};
