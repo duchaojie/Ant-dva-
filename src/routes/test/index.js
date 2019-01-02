@@ -4,7 +4,7 @@ import { Link } from 'dva/router';
 import { Table, Divider, Popconfirm } from 'antd';
 import PathButton from '../../components/PathButton';
 import Modal from './Modal';
-import { getStorage, storageModify, storageRemove } from '../../utils';  //本地存储
+import { getStorage, storageModify, storageRemove } from '../../utils';
 
 class List extends React.PureComponent {
   state = {
@@ -29,7 +29,7 @@ class List extends React.PureComponent {
           dataIndex: 'description',
         }, {
           title: '操作',
-          render: (_, record) => (
+          render: (_, record) =>(
             <React.Fragment>
               <Link to={`/account/list/detail?id=${record.accountNumber}`}>查看</Link>
               <Divider type="vertical" />
@@ -45,11 +45,12 @@ class List extends React.PureComponent {
       data: getStorage('account'),//   master  获取本地的数据 localStorage
       active: {},
   };
-//查找
+ // 查找
+
     onSearch = values => {
         console.log(values);
     };
-//添加
+  // 添加
     onAdd = () => {
         this.setState({ active: {} }, () => {
         this.formRef.modalRef.show();
