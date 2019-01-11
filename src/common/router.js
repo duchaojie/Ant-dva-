@@ -140,5 +140,10 @@ export const getRouterData = app => {
       name: '页面管理',
 
     },
+    '/todoManage': {
+      component: dynamicWrapper(app, [], () => import('../routes/todoManage')),
+      name: '页面管理',
+
+    },
   };
 };
