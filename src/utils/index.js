@@ -223,7 +223,7 @@ export function eachItemsToOption(options, props) {
   );
 }
 
-//du  在 routes/masterDtata/detail/Detection.js
+// du 在 routes/masterDtata/detail/Detection.js
 // 将数据遍历后生成 option 节点
 export function eachSelect(options, props) {
   return (
@@ -264,7 +264,8 @@ export function replaceKey(data, keyObj) {
     return obj;
   });
 }
-//设置本地存储
+
+// 设置本地存储
 export function getStorage(name) {
   const data = window.localStorage[name];
 

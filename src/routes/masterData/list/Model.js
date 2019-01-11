@@ -26,10 +26,10 @@ handleOk  = ()=> {
         const formProps = { form, cols:[8], required:false };
         return (
             <ModalBox
-                ref= {(r) => {this.modalRef= r }}
-                title = "ADD"
-                width={750}
-                handleOk = {this.handleOk}
+              ref = {(r) => {this.modalRef= r }}
+              title = "ADD"
+              width={750}
+              handleOk= {this.handleOk}
             >
             <Row>
                 <FormItem
@@ -37,8 +37,8 @@ handleOk  = ()=> {
                 className= "hidden"
                 label="主数据编号"
                 fieldName="zsjbh"
-                initialValue ={data.zsjbh || `RM_${genNonDuplicateID()}`} 
-                // 根据编号 
+                initialValue ={data.zsjbh || `RM_${genNonDuplicateID()}`}
+                // 根据编号
                 />
                 <Col span={colSpan}>
                     <FormData
@@ -61,7 +61,7 @@ handleOk  = ()=> {
                         {...formProps}
                         label="部门"
                         fieldName = "bm"
-                        initialValue = {data.bm} 
+                        initialValue = {data.bm}
                     >
                     <Select style= {{ width:'100%'}}>
                         <Select.Option key = "bA"> 市场部门</Select.Option>
@@ -74,7 +74,7 @@ handleOk  = ()=> {
                         {...formProps}
                         label="生产线"
                         fieldName = "scx"
-                        initialValue = {data.scx} 
+                        initialValue = {data.scx}
                     >
                     <Select style= {{ width:'100%'}} placeholder="选择所在生产线" >
                         <Select.Option key = "scxA">A线</Select.Option>
@@ -87,7 +87,7 @@ handleOk  = ()=> {
                         {...formProps}
                         label="厂区"
                         fieldName = "cq"
-                        initialValue = {data.cq} 
+                        initialValue = {data.cq}
                     >
                     <Select style= {{ width:'100%'}} placeholder="选择所在厂区"  >
                         <Select.Option key = "cq1">A-1</Select.Option>
@@ -101,7 +101,7 @@ handleOk  = ()=> {
                         {...formProps}
                         label="类型"
                         fieldName = "lx"
-                        initialValue = {data.lx} 
+                        initialValue = {data.lx}
                     >
                     <Select style= {{ width:'100%'}} placeholder="选择类型"  >
                         <Select.Option key = "lx1">A类</Select.Option>
@@ -131,8 +131,10 @@ handleOk  = ()=> {
 
             </Row>
             </ModalBox>
-        );  
+        );
     }
 }
 
 export  default From.create()(ModelCreate);
+
+

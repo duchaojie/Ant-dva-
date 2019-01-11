@@ -45,6 +45,11 @@ const menuData = [
     icon: 'setting',
     path: 'addressChoose',
   },
+  {
+    name: 'page',
+    icon: 'star',
+    path: 'pageManage',
+  },
 
 ];
 

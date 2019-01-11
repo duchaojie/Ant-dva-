@@ -134,6 +134,10 @@ export const getRouterData = app => {
     '/addressChoose': {
       component: dynamicWrapper(app, [], () => import('../routes/addressChoose/index')),
       name: '地址选择',
+    },
+    '/pageManage': {
+      component: dynamicWrapper(app, [], () => import('../routes/pageManage')),
+      name: '页面管理',
 
     },
   };
