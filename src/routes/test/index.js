@@ -56,13 +56,13 @@ class List extends React.PureComponent {
         this.formRef.modalRef.show();
         });
     };
-//编辑
+// 编辑
     onModify = record => {
         this.setState({ active: record }, () => {
         this.formRef.modalRef.show();
         });
     };
-//删除
+// 删除
     onRemove = accountNumber => {
         const list = storageRemove('account', 'accountNumber', accountNumber);
         this.setState({ data: list });
@@ -82,18 +82,18 @@ class List extends React.PureComponent {
         <PathButton name="新增主数据" onClick={this.onAdd} />
         {/* 增加数据的按钮  onAdd */}
         <Table
-          bordered //是否展示外边框和列边框 默认 false
+          bordered // 是否展示外边框和列边框 默认 false
           // loading={loading}
-          rowKey="accountNumber"  //每行的key 的取值
-          columns={columns}  //表格列的配置描述
-          dataSource={data}  //数据数组
-          pagination={false} //分页器  false 不展示分页
+          rowKey="accountNumber"  // 每行的key 的取值
+          columns={columns}  // 表格列的配置描述
+          dataSource={data}  // 数据数组
+          pagination={false} // 分页器  false 不展示分页
         />
         <Modal
         // 经过 Model 的Form.create  之后要拿到 ref 使用 rc-form 提供的 wrappedComponentRef
           wrappedComponentRef={(r) => {this.formRef = r}}  //
           data={active}
-          callback={this.modalCallback}  //modalCallback 方法
+          callback={this.modalCallback}  // modalCallback 方法
         />
       </React.Fragment>
     );
@@ -101,12 +101,3 @@ class List extends React.PureComponent {
 }
 
 export default List;
-
-
-
-
-
-
-
-
-
