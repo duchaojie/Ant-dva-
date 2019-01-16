@@ -1,7 +1,4 @@
-/**
- * 设置管理-用户管理
- * /settingManage/userManage
- */
+
 import React, { Component, Fragment } from 'react';
 import {
   Button,
