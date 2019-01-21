@@ -45,7 +45,11 @@ const menuData = [
     icon: 'setting',
     path: 'addressChoose',
   },
-
+  {
+    name: '待测',
+    icon: 'setting',
+    path: 'waitingManage',
+  },
 ];
 
 export function formatterMenuData(data = menuData, parentPath = '/') {
