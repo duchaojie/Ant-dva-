@@ -15,6 +15,7 @@ class ModalCreate extends React.PureComponent {
 // validateFields 校验 并获取一组输入区域的值 与 error  若filedName 参数为空 则校验全部的组件
     form.validateFields((err, values) => {
       if (!err) {
+        console.log('得到的值是:',values);
         callback(values);
       }
     });
