@@ -44,6 +44,31 @@
 
 
 
+// *queryTaskCode(_, { call, put }) {
+    //   const res = yield call(queryTaskCode);
+    //   if (res && res.success) {
+    //     yield put({
+    //       type: 'getTaskCode',
+    //       payload: {
+    //         taskCodeObj: res.dataObject || {},
+    //       },
+    //     });
+    //   }
+    // },
+    // getTaskCode(state, { payload }) {
+    //   return {
+    //     ...state,
+    //     ...payload,
+    //   }
+    // },
+// // 查询任务编号
+// export function queryTaskCode() {
+//   return request({
+//     url: '/identity/code.json',
+//   });
+// }
+
+
 
 componentDidMount() {
   // const { match, dispatch } = this.props;
@@ -98,3 +123,65 @@ handleSearch = (e) => {
     };
   });
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // .then(res => {
+        //   if(res.success){
+        //     message.success(text, 1);
+        //     dispatch(routerRedux.push("/masterProject/product"));
+        //   }
+        //   // // console.log('res',res);
+        //   //   message.success(text, 1);
+        //   //   dispatch(routerRedux.push({ pathname: "/masterProject/product" }));
+        // });
+
+  // handleSearch = (e) => {
+  //   e.preventDefault();
+  //   const { detailInfo,searchValues,form, dispatch } = this.props;
+  //   const { userCode } = detailInfo;
+  //   let actionType = 'productManage/addProduct';
+  //   let messageText = '添加成功';
+  //   if (userCode) {
+  //     actionType = '';
+  //     messageText = '编辑成功';
+  //   }
+  //   form.validateFields((err, fileldsValue) => {
+  //     if(!err){
+  //       dispatch({
+  //         type: actionType,
+  //         payload: { ...fileldsValue, userCode },
+  //       }).then(() => {
+  //         const { sign } = this.props.addProductInfo;
+  //         if (sign) {
+  //           this.props.dispatch({
+  //             type: 'productManage/addProduct',
+  //             payload:{
+  //               ...searchValues,
+  //             },
+  //           });
+  //           message.success(messageText);
+  //           dispatch(routerRedux.push("/masterProject/product"));
+  //         }
+  //       });
+  //     }
+  //   });
+  // }
+
