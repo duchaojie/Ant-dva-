@@ -38,3 +38,63 @@
 //     body: formData,
 //   });
 // }
+
+
+
+
+
+
+
+componentDidMount() {
+  // const { match, dispatch } = this.props;
+  // const { taskId } = match.params;
+  // this.taskId = taskId;
+  // if (taskId) {
+  //   dispatch({
+  //     type: 'productManage/queryDetail',
+  //     payload: taskId,
+  //   });
+  // } else {
+  //   dispatch({
+  //     type: 'productManage/queryTaskCode',
+  //   })
+  //    // 新增清除之前数据
+  //   dispatch({
+  //     type: 'productManage/getDetailInfo',
+  //     payload: { detailInfo: {} },
+  //   })
+  // }
+  // this.props.dispatch({
+  //   type: 'productManage/queryOrgList',
+  // })
+}
+
+
+
+handleSearch = (e) => {
+  e.preventDefault();
+  const { form, dispatch, trtProdCode } = this.props;
+  // const taskId = this.taskId;
+  const text = '新增成功';
+  // if (taskId) {
+  //   text = '编辑成功';
+  // }
+  form.validateFields((err, fileldsValue) => {
+    if (!err) {
+      console.log(fileldsValue)
+      dispatch({
+        type: 'productManage/addProduct',
+        payload: {
+          ...fileldsValue,
+          trtProdCode,
+        },
+      }).then(res => {
+        // console.log('res',res);
+        if (res.success) {
+          message.success(text, 1);
+          dispatch(routerRedux.push({ pathname: "/masterProject/product" }));
+        }
+      });
+    };
+  });
+}
