@@ -16,3 +16,5 @@ class Welcome extends React.PureComponent {
 }
 
 export default Welcome;
+
+

@@ -73,4 +73,56 @@ var xx = 4;
 var yy = -xx;
 console.log("x 值为: ", xx); // 输出结果 4
 console.log("y 值为: ", yy); // 输出结果 -4
-console.log("x 值为: ", xx); //
+// 计算5的阶乘
+var numm = 5;
+var i;
+var fact = 1;
+for (i = numm; i >= 1; i--) {
+    fact *= i;
+}
+console.log(fact);
+// for ... in 循环 ：用于一组值的集合或列表进行迭代输出 变量要指定为 string或any
+var j;
+var i = 'a b c';
+for (j in i) {
+    console.log(i[j]);
+}
+//for ...of  创建一个循环来迭代可迭代的对象 可以代替 forEach 和for...in
+var someAny = [1, 'string', false];
+for (var _i = 0, someAny_1 = someAny; _i < someAny_1.length; _i++) {
+    var entry = someAny_1[_i];
+    console.log(entry); // 1 string false
+}
+// forEach 循环
+var list = [2, 3, 4, 5];
+list.forEach(function (val, idx, array) {
+    // var: 当前值
+    // idx:当前index
+    // array:array
+    console.log(val, idx, array);
+});
+// 结果
+// 2 0 [ 2, 3, 4, 5 ]
+// 3 1 [ 2, 3, 4, 5 ]
+// 4 2 [ 2, 3, 4, 5 ]
+// 5 3 [ 2, 3, 4, 5 ]
+// every 循环  和forEach的参数一样
+var data = [4, 5, 6];
+data.every(function (v, i, a) {
+    // var: 当前值
+    // idx:当前index
+    // array:array
+    console.log(v, i, a);
+    return true;
+    // return false;
+    // retrun false  第一次执行结束后 将会停止循环
+    // 4 0 [ 4, 5, 6 ]
+});
+//  while
+var nums = 5;
+var total = 1;
+while (nums > 1) {
+    total *= nums;
+    nums--;
+}
+console.log('五的阶乘', total);
