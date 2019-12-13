@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Menu, Icon, Dropdown, Spin } from 'antd';
+import { Menu, Icon, Dropdown, Spin, Avatar } from 'antd';
 import { Link } from 'dva/router';
 import styles from './index.less';
 
@@ -62,6 +62,7 @@ export default class GlobalHeader extends PureComponent {
           </Link> */}
           <Dropdown overlay={menu}>
             <span className={`${styles.action} ${styles.account}`}>
+              <Avatar style={{ backgroundColor: '#87d068', marginRight: 5 }} icon="user" />
               <span className={styles.name}>{info.account || <Spin size="small" />}</span>
             </span>
           </Dropdown>

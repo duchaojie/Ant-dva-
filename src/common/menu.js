@@ -1,33 +1,11 @@
 import { isUrl } from '../utils';
 
 const menuData = [
-  {
-    name: '系统管理',
-    icon: 'setting',
-    path: 'system',
-    children: [
-      {
-        name: '用户管理',
-        path: 'userManage',
-        permission: 'mgr',
-      },
-      {
-        name: '角色管理',
-        path: 'roleManage',
-        permission: 'role',
-      },
-    ],
-  },
-  {
-    name: '测试',
-    icon: 'star',
-    path: 'test',
-  },
-  {
-    name: '省级联动',
-    icon: 'star',
-    path: 'province2',
-  },
+  // {
+  //   name: '省级联动',
+  //   icon: 'star',
+  //   path: 'province2',
+  // },
   {
     name: '数据管理',
     icon: 'setting',
@@ -40,22 +18,43 @@ const menuData = [
     icon: 'setting',
     path: 'masterRecipe',
   },
-  {
-    name: '地址选择',
-    icon: 'setting',
-    path: 'addressChoose',
-  },
-  {
-    name: 'page',
-    icon: 'star',
-    path: 'pageManage',
-  },
+  // {
+  //   name: '地址选择',
+  //   icon: 'setting',
+  //   path: 'addressChoose',
+  // },
+  // {
+  //   name: 'page',
+  //   icon: 'star',
+  //   path: 'pageManage',
+  // },
   {
     name: 'ToDo',
     icon: 'star',
     path: 'todoManage',
   },
-
+  {
+    name: '测试',
+    icon: 'star',
+    path: 'test',
+  },
+  {
+    name: '系统管理',
+    icon: 'setting',
+    path: 'systermManage',
+    children: [
+      {
+        name: '用户管理',
+        icon: 'star',
+        path: 'userManage',
+      },
+      {
+        name: '角色管理',
+        icon: 'star',
+        path: 'roleManage',
+      },
+    ],
+  },
 ];
 
 export function formatterMenuData(data = menuData, parentPath = '/') {

@@ -91,28 +91,26 @@ export const getRouterData = app => {
     },
     // ==> 安全设置
     '/secure/setting': {
-      component: dynamicWrapper(app, ['user'], () => import('../routes/secureSetting')),
+      component: dynamicWrapper(app, ['user'], () => import('../routes/Settings/UserManage/index')),
       name: '安全设置',
     },
-    // ==> 用户管理
-    '/system/userManage': {
-      component: dynamicWrapper(app, ['userManage_list'], () => import('../routes/userManage/users')),
+     // 系统设置
+    '/systermManage/userManage': {
+      component: dynamicWrapper(app, [], () => import('../routes/Settings/UserManage/index')),
       name: '用户管理',
-      permissions: ['mgr_page'],
     },
-    '/system/roleManage': {
-      component: dynamicWrapper(app, ['roleManage'], () => import('../routes/role')),
+    '/systermManage/roleManage': {
+      component: dynamicWrapper(app, [], () => import('../routes/Settings/RoleManage/index')),
       name: '角色管理',
-      permissions: ['role_page'],
     },
     '/test': {
       component: dynamicWrapper(app, [], () => import('../routes/test')),
       name: '测试',
     },
-    '/province2': {
-      component: dynamicWrapper(app, [], () => import('../routes/province2')),
-      name: '省二级联动',
-    },
+    // '/province2': {
+    //   component: dynamicWrapper(app, [], () => import('../routes/province2')),
+    //   name: '省二级联动',
+    // },
     '/masterData': {
       component: dynamicWrapper(app, [], () => import('../routes/masterData/list')),
       name: '数据管理',
@@ -131,19 +129,17 @@ export const getRouterData = app => {
       name: '基本详情',
 
     },
-    '/addressChoose': {
-      component: dynamicWrapper(app, [], () => import('../routes/addressChoose/index')),
-      name: '地址选择',
-    },
-    '/pageManage': {
-      component: dynamicWrapper(app, [], () => import('../routes/pageManage')),
-      name: '页面管理',
-
-    },
+    // '/addressChoose': {
+    //   component: dynamicWrapper(app, [], () => import('../routes/addressChoose/index')),
+    //   name: '地址选择',
+    // },
+    // '/pageManage': {
+    //   component: dynamicWrapper(app, [], () => import('../routes/pageManage')),
+    //   name: '页面管理',
+    // },
     '/todoManage': {
       component: dynamicWrapper(app, [], () => import('../routes/todoManage')),
       name: '页面管理',
-
     },
   };
 };
