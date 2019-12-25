@@ -94,7 +94,7 @@ export const getRouterData = app => {
       component: dynamicWrapper(app, ['user'], () => import('../routes/Settings/UserManage/index')),
       name: '安全设置',
     },
-     // 系统设置
+    // 系统设置
     '/systermManage/userManage': {
       component: dynamicWrapper(app, [], () => import('../routes/Settings/UserManage/index')),
       name: '用户管理',
@@ -107,10 +107,17 @@ export const getRouterData = app => {
       component: dynamicWrapper(app, [], () => import('../routes/test')),
       name: '测试',
     },
+    // //  chart ---aone
+    // '/aone': {
+    //   component: dynamicWrapper(app, [], () => import('../routes/Aone')),
+    //   name: '图表',
+    // },
+
     // '/province2': {
     //   component: dynamicWrapper(app, [], () => import('../routes/province2')),
     //   name: '省二级联动',
     // },
+
     '/masterData': {
       component: dynamicWrapper(app, [], () => import('../routes/masterData/list')),
       name: '数据管理',

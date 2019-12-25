@@ -1,114 +1,109 @@
+/**
+ * 动态添加
+ */
+import React, { Component } from 'react'
+import { Table, Tooltip, Icon, Popconfirm, Button } from 'antd';
 
-import React from 'react';
-import { Link } from 'dva/router';
-import { Table, Divider, Popconfirm } from 'antd';
-import PathButton from '../../components/PathButton';
-import Modal from './Modal';
-import { getStorage, storageModify, storageRemove } from '../../utils';
-import Tables from './Table/index';
-
-
-class List extends React.PureComponent {
+export default class Tables extends Component {
   state = {
-    columns: [
-      {
-        title: '账户编号',
-        dataIndex: 'accountNumber',
-      }, {
-        title: '账户性质',
-        dataIndex: 'accountProperty',
-      }, {
-        title: '名称',
-        dataIndex: 'accountName',
-      }, {
-        title: '账户号',
-        dataIndex: 'accountNo',
-      }, {
-        title: '开户行',
-        dataIndex: 'accountBank',
-      }, {
-        title: '备注',
-        dataIndex: 'description',
-      }, {
-        title: '操作',
-        render: (_, record) => (
-          <React.Fragment>
-            <Link to={`/account/list/detail?id=${record.accountNumber}`}>查看</Link>
-            <Divider type="vertical" />
-            <a onClick={() => this.onModify(record)}>编辑</a>
-            <Divider type="vertical" />
-            <Popconfirm title="是否删除该项？" onConfirm={() => this.onRemove(record.accountNumber)}>
-              <a>删除</a>
-            </Popconfirm>
-          </React.Fragment>
-        ),
-      },
-    ],
-    data: getStorage('account'),//   master  获取本地的数据 localStorage
-    active: {},
-  };
-  // 查找
-  onSearch = values => {
-    console.log(values);
-  };
-  // 添加
-  onAdd = () => {
-    this.setState({ active: {} }, () => {
-      this.formRef.modalRef.show();
-    });
-  };
-  // 编辑
-  onModify = record => {
-    this.setState({ active: record }, () => {
-      this.formRef.modalRef.show();
-    });
-  };
-  // 删除
-  onRemove = accountNumber => {
-    const list = storageRemove('account', 'accountNumber', accountNumber);
-    this.setState({ data: list });
-  };
+    loading: false,
+    data: [{
+      trialAmt: 1232313,
+      trialTaxAmt: 12,
+      current: 3000,
+      key: '01',
+    }, {
+      trialAmt: 3847,
+      trialTaxAmt: 490,
+      current: 34000,
+      key: '02',
+    }],
+  }
 
-  modalCallback = values => {
-    const list = storageModify('account', 'accountNumber', values);
-    this.formRef.modalRef.hide();
-    this.setState({ data: list });
-  };
+  inedx = 0;
+  delete = (key) => {
+    const { data } = this.state;
+    const newData = data.filter(item => item.key !== key);
+    this.setState({ data: newData });
 
+  }
+  newMember = () => {
+    console.log('添加list');
+    const { data } = this.state;
+    const newData = data.map(item => ({ ...item }))
+    newData.push({
+      key: `NEW_TEMP_ID_${this.index}`,
+      trialAmt: 234,
+      trialTaxAmt: 34,
+      newMember: 6586,
+    });
+    this.index += 1; // ?
+    this.setState({ data: newData });
+    // this.props.change(newData); // ?
+  }
   render() {
-    const { columns, data, active } = this.state;
-    //  搜索框的布局
+    const columns = [
+      {
+        title: (
+          <span>
+            当期应付金额(元)
+            <Tooltip
+              placement="top"
+              title="不含税"
+            >
+              <Icon type="question-circle-o" style={{ color: '#1890ff', marginLeft: 4 }} />
+            </Tooltip>
+          </span>
+        ),
+        dataIndex: 'trialAmt',
+        key: 'trialAmt',
+        width: "30%",
+      },
+      {
+        title: '应付增值税(元)',
+        dataIndex: 'trialTaxAmt',
+        key: 'trialTaxAmt',
+        width: '30%',
+      }, {
+        title: '当前可用资金',
+        dataIndex: 'current',
+        key: 'current',
+        width: '20%',
+      },
+      {
+        title: '操作',
+        key: 'action',
+        width: '20%',
+        render: (text, record) => {
+          const { loading } = this.state;
+          if (!!record.editable && loading) {
+            return null;
+          }
+          return (
+            <span>
+              <Popconfirm title="是否要删除此行？" onConfirm={() => this.delete(record.key)}>
+                <Icon style={{ fontSize: 20, cursor: 'pointer' }} type="minus-circle-o" />
+              </Popconfirm>
+            </span>
+          );
+        },
+      },
+    ];
     return (
-      <React.Fragment>
-        {/* <PathButton name="新增主数据" onClick={this.onAdd} /> */}
-        {/* 增加数据的按钮  onAdd */}
-        {/* <Table
-          bordered // 是否展示外边框和列边框 默认 false
-          // loading={loading}
-          rowKey="accountNumber"  // 每行的key 的取值
-          columns={columns}  // 表格列的配置描述
-          dataSource={data}  // 数据数组
-          pagination={false} // 分页器  false 不展示分页
+      <div>
+        <Table
+          rowKey='key'
+          title={() => (
+            <div>
+              <Button type="primary" icon="plus" onClick={this.newMember}>新增Tablelsit</Button>
+            </div>
+          )}
+          columns={columns}
+          dataSource={this.state.data}
+          pagination={false}
+          bordered
         />
-        <Modal
-        // 经过 Model 的Form.create  之后要拿到 ref 使用 rc-form 提供的 wrappedComponentRef
-          wrappedComponentRef={(r) => {this.formRef = r}}  //
-          data={active}
-          callback={this.modalCallback}  // modalCallback 方法
-        /> */}
-        <Tables />
-      </React.Fragment>
-    );
+      </div>
+    )
   }
 }
-
-export default List;
-
-
-
-
-
-
-
-
-

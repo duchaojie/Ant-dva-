@@ -35,3 +35,40 @@ fs.readdirSync(path.join(__dirname, 'mock')).forEach(file => {
 
 export default (noProxy ? ProxyIndex : delay(proxy, 1000));
 
+
+
+
+// 代理接口
+// import { currentUser } from './mock/api';
+// import { format, delay } from 'roadhog-api-doc';
+
+// // 本地 service mock 支持值为 Object 和 Array 请参考：https://github.com/ant-design/ant-design-pro/blob/1.4.4/.roadhogrc.mock.js
+// const mockApi = {
+//   'GET /api/currentUser': {
+//     ...currentUser,
+//   },
+//   'POST /api/login/account': (req, res) => {
+//     const { password, userName, type } = req.body;
+//     if (password === '888888' && userName === 'admin') {
+//       res.send({ status: 'ok', type });
+//     }
+//     res.send({ status: 'error', type, errorMessage: '账号密码错误' });
+//   },
+// };
+// // 是否禁用代理
+// const noProxy = process.env.NO_PROXY === 'true';
+
+// const action = '/am/(.*)';
+// const asset = 'http://test.pod1.abssqr.cn:8039/am/';
+// // 代码中会兼容本地 service mock 以及部署站点的静态数据
+// const proxy = {
+//   ...mockApi,
+//   // proxy 实际请求服务端接口
+//   [`GET ${action}`]: `${asset}`,
+//   [`POST ${action}`]: `${asset}`,
+//   [`PUT ${action}`]: `${asset}`,
+//   [`DELETE ${action}`]: `${asset}`,
+// };
+
+// export default (noProxy ? {} : delay(proxy, 1000));
+

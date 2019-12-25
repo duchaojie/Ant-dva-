@@ -7,7 +7,8 @@ import {
   Axis,
   Legend,
 } from 'bizcharts';
-import { DataView } from '@antv/data-set';
+import { formatMoney } from '../../../utils/utils';
+// import { DataView } from '@antv/data-set';
 
 
 export default class Line extends React.Component {
@@ -23,21 +24,30 @@ export default class Line extends React.Component {
   }
   render() {
     const {
-      height, // 默认高
+      height=200, // 默认高
       padding,
       data,
-      fields, // 展开字段集
-      xKey,
+      legend=true,
+      // fields, // 展开字段集
+      xKey='x',
+      yKey='y',
+      title='',
+      customTooltip,
       shape = 'line', // 默认折线图
-      unit = '',
+      unit = '',   // Y 轴的单位
+      color = 'rgba(24, 144, 255, 0.85)',
     } = this.props;
-    const dv = new DataView();
-    dv.source(data).transform({
-      type: 'fold',
-      fields: fields, // 展开字段集
-      key: 'fields_props', // key字段
-      value: 'fields_value', // value字段
-    });
+    // let transData = data;
+    // if (fields) {
+    //   const dv = new DataView();
+    //   dv.source(data).transform({
+    //     type: 'fold',
+    //     fields: fields, // 展开字段集
+    //     key: xKey, // key字段
+    //     value: yKey, // value字段
+    //   });
+    //   transData = dv;
+    // }
 
     const cols = {
       [xKey]: {
@@ -48,20 +58,40 @@ export default class Line extends React.Component {
     return (
       <Chart
         height={height}
-        data={dv}
+        data={data}
         scale={cols}
-        padding={padding}
+        padding={padding ||'auto'}
         onGetG2Instance={(chart) => {
           this.chart = chart;
         }}
         forceFit
       >
-        <Legend />
+        {legend && <Legend />}
         <Axis name={xKey} />
-        <Axis name="fields_value" label={{ formatter: val => `${val}${unit}` }} />
+        <Axis name={yKey} label={{ formatter: val => unit=== '元' ? `${formatMoney(val)}${unit}` : `${val}${unit}` }} />
         <Tooltip crosshairs={{ type: 'y' }} />
-        <Geom type="line" position={`${xKey}*fields_value`} size={2} color="fields_props" shape={shape} />
-        <Geom type="point" position={`${xKey}*fields_value`} size={4} shape="circle" color="fields_props" style={{ stroke: '#fff', lineWidth: 1 }} />
+        <Geom
+          type="line"
+          tooltip={customTooltip && [`${xKey}*${yKey}`, (_, value) => {
+            return {
+              // 自定义 tooltip 上显示的 value 显示内容等。
+              name: `${title}`,
+              value: `${value}${unit}`,
+            };
+          }]}
+          position={`${xKey}*${yKey}`}
+          size={2}
+          color={color}
+          shape={shape}
+        />
+        <Geom
+          type="point"
+          position={`${xKey}*${yKey}`}
+          size={4}
+          shape="circle"
+          color={color}
+          style={{ stroke: '#fff', lineWidth: 1 }}
+        />
       </Chart>
     );
   }

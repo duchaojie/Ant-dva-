@@ -320,3 +320,62 @@ export function storageRemove(name, field, id) {
   setStorage(name, arr);
   return arr;
 }
+
+
+// 数字保留两位小数
+/**
+ * 12       --> "12.00"
+ * 1234567  --> "1,234,567.00"
+ * 12345.67 --> "12,345.67"
+ */
+export function formatMoney(money) {
+  if (money === 0) {
+    return 0;
+  }
+  if (money && money !== null) {
+    return `${money}`.replace(/\B(?=(\d{3})+(?!\d))/g, ','); // 不保留2位数了
+    // return Number(money).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+  }
+}
+
+
+export function transformDate(date) {
+  return date ? date.split(' ')[0] : '';
+}
+
+/**
+ * 文件下载，可以用 https://github.com/eligrey/FileSaver.js/ 替代。
+ * @param {Blob Object} blob
+ * @param {string} fileName
+ */
+
+export function downloadFile(blob, fileName) {
+  if (window.navigator && window.navigator.msSaveOrOpenBlob) { // 兼容IE
+    window.navigator.msSaveOrOpenBlob(blob, fileName);
+  } else {
+    const a = document.createElement('a');
+    a.style = "display: none";
+    const url = window.URL.createObjectURL(blob);
+    a.href = url;
+    a.download = fileName;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    window.URL.revokeObjectURL(url);
+  }
+}
+
+// url = 'XXXXXX.com'
+// text = '文件名称'
+// handleSubmit = () => {
+//   request({
+//     url: `url`,
+//     method: 'GET',
+//     type: 'download',
+//   }).then(res => {
+//     if (res.success === false) {
+//       return;
+//     }
+//     downloadFile(res, this.text);
+//   });
+// }

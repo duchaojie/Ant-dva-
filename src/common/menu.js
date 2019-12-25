@@ -38,6 +38,11 @@ const menuData = [
     icon: 'star',
     path: 'test',
   },
+  // {
+  //   name: '分析chart',
+  //   icon: 'star',
+  //   path: 'aone',
+  // },
   {
     name: '系统管理',
     icon: 'setting',
